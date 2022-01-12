@@ -1,9 +1,8 @@
-<h2>Editing "<%= @post.title %>"</h2>
-<%= form_tag post_path(@post), method: "Patch" do %>
-
-<% if @post.errors.any? %>
+<h2>Create an Author</h2>
+<%= form_tag posts_path, method: "post" do %>
+  <% if @post.errors.any? %>
     <div id="error_explanation">
-      <h2>There were some errors:</h2>
+      <h3>There were some errors:</h3>
       <ul>
         <% @post.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -27,7 +26,6 @@
     <div class="field_with_errors">
   <% end %>
     <%= label_tag "category", "Category" %>
-    <p>Must be either "Fiction" or "Non-Fiction".</p>
     <%= text_field_tag "category", @post.category %>
   </div>
 
@@ -37,9 +35,8 @@
     <div class="field_with_errors">
   <% end %>
     <%= label_tag "content", "Content" %>
-    <br />
-    <%= text_area_tag "content", @post.content %>
+    <%= text_field_tag "content", @post.content %>
   </div>
-  <%= submit_tag "Update" %>
-<% end %>
 
+  <%= submit_tag "Create" %>
+<% end %>
